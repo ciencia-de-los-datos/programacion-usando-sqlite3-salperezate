@@ -32,7 +32,7 @@
 --  de la columna c21 de la tabla tbl2 por ano 
 --  (columna c23).
 --
---  Rta/
+--  Resultado:
 --     YEAR    avg(c21)
 --  0  2016  564.476429
 --  1  2017  515.156364
@@ -41,4 +41,21 @@
 --
 --  >>> Escriba su codigo a partir de este punto <<<
 --
-SELECT YEAR(c23) AS YEAR, AVG(c21) AS avg_c21 FROM tbl2 GROUP BY YEAR(c23)
+
+-- SELECT YEAR(c23) AS YEAR, AVG(c21) AS avg_c21 FROM tbl2 GROUP BY YEAR(c23)
+
+-- SELECT YEAR(tbl2.c23) AS YEAR, AVG(tbl2.c21) AS avg_c21
+-- FROM tbl2
+-- GROUP BY YEAR(tbl2.c23)
+-- ORDER BY YEAR(tbl2.c23)
+
+-- SELECT EXTRACT(YEAR FROM tbl2.c23) AS YEAR, AVG(tbl2.c21) AS avg_c21
+-- FROM tbl2
+-- GROUP BY EXTRACT(YEAR FROM tbl2.c23)
+-- ORDER BY EXTRACT(YEAR FROM tbl2.c23)
+
+SELECT strftime('%Y', tbl2.c23) AS YEAR, AVG(tbl2.c21) AS avg_c21
+FROM tbl2
+GROUP BY strftime('%Y', tbl2.c23)
+ORDER BY strftime('%Y', tbl2.c23)
+
