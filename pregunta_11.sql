@@ -39,11 +39,14 @@
 --  >>> Escriba su codigo a partir de este punto <<<
 -- 
 
--- SELECT COUNT(*) AS CANT FROM tbl1 WHERE YEAR(c14) = 2018
--- SELECT YEAR(c14) AS YEAR, COUNT(*) AS CANT FROM tbl1 WHERE YEAR(c14) = 2018 GROUP BY YEAR(c14)
-
-SELECT YEAR(tbl1.c14) AS YEAR, COUNT(*) AS CANT
+WITH year_2018 AS (
+  
+SELECT 
+    strftime('%Y',c14) AS "YEAR"
 FROM tbl1
-JOIN tbl2 ON tbl1.K1 = tbl2.K1
-WHERE YEAR(tbl1.c14) = 2018
-GROUP BY YEAR
+WHERE "YEAR" = '2018'
+  
+) 
+SELECT 
+  count() AS "COUNT(*)"
+FROM year_2018

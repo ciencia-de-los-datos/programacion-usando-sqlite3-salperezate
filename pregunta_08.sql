@@ -40,22 +40,10 @@
 --  3  2019  550.998571
 --
 --  >>> Escriba su codigo a partir de este punto <<<
---
 
--- SELECT YEAR(c23) AS YEAR, AVG(c21) AS avg_c21 FROM tbl2 GROUP BY YEAR(c23)
 
--- SELECT YEAR(tbl2.c23) AS YEAR, AVG(tbl2.c21) AS avg_c21
--- FROM tbl2
--- GROUP BY YEAR(tbl2.c23)
--- ORDER BY YEAR(tbl2.c23)
-
--- SELECT EXTRACT(YEAR FROM tbl2.c23) AS YEAR, AVG(tbl2.c21) AS avg_c21
--- FROM tbl2
--- GROUP BY EXTRACT(YEAR FROM tbl2.c23)
--- ORDER BY EXTRACT(YEAR FROM tbl2.c23)
-
-SELECT strftime('%Y', tbl2.c23) AS YEAR, AVG(tbl2.c21) AS avg_c21
+SELECT strftime('%Y', c23) as "strftime('%Y', c23)", AVG(c21) as "avg(c21)"
 FROM tbl2
-GROUP BY strftime('%Y', tbl2.c23)
-ORDER BY strftime('%Y', tbl2.c23)
+GROUP BY strftime('%Y', c23)
+ORDER BY strftime('%Y', c23) ASC;
 
