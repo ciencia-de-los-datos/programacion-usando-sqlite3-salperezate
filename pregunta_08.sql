@@ -32,7 +32,7 @@
 --  de la columna c21 de la tabla tbl2 por ano 
 --  (columna c23).
 --
---  Rta/
+--  Resultado:
 --     YEAR    avg(c21)
 --  0  2016  564.476429
 --  1  2017  515.156364
@@ -40,4 +40,10 @@
 --  3  2019  550.998571
 --
 --  >>> Escriba su codigo a partir de este punto <<<
---
+
+
+SELECT strftime('%Y', c23) as "strftime('%Y', c23)", AVG(c21) as "avg(c21)"
+FROM tbl2
+GROUP BY strftime('%Y', c23)
+ORDER BY strftime('%Y', c23) ASC;
+

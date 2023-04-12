@@ -43,4 +43,10 @@
 --
 --  >>> Escriba su codigo a partir de este punto <<<
 --  
-
+-- MALO
+-- SELECT tbl1.K0, AVG(tbl2.c21) FROM tbl1 INNER JOIN tbl2 ON tbl1.K1 = tbl2.K1 WHERE tbl1.c13 > 400 GROUP BY tbl1.K0
+SELECT K0, AVG(c21) AS "avg(c21)"
+FROM tbl1 t1
+JOIN tbl2 t2 ON t1.K1 = t2.K1
+WHERE c13 > 400
+GROUP BY K0
